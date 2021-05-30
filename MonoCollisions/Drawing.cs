@@ -9,13 +9,19 @@ namespace MonoCollisions
         public const int ScreenWidth = 512;
         public const int ScreenHeight = 512;
 
+        // Tile size
+        public const int TileSize = 32;
+
         private static Texture2D blankTexture;
 
         public static void InitializeGraphics(Game1 game)
         {
+            // Set screen size
             game.Graphics.PreferredBackBufferWidth = ScreenWidth;
             game.Graphics.PreferredBackBufferHeight = ScreenHeight;
+            game.Graphics.ApplyChanges();
 
+            // Initialize blank texture
             blankTexture = new Texture2D(game.GraphicsDevice, 1, 1);
             blankTexture.SetData(new Color[] { Color.White });
         }
