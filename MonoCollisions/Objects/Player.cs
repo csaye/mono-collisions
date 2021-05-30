@@ -28,7 +28,7 @@ namespace MonoCollisions.Objects
 
             // Process movement
             Vector2 newPosition = position + movementDirection * delta * Speed;
-            position = game.ObjectManager.NearestEmptyPosition(this, newPosition);
+            position = game.GridObjectManager.NearestEmptyPosition(this, newPosition);
         }
 
         public override void Draw(Game1 game)

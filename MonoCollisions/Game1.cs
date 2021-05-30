@@ -11,7 +11,7 @@ namespace MonoCollisions
         public SpriteBatch SpriteBatch { get; private set; }
 
         public Player Player { get; private set; }
-        public ObjectManager ObjectManager { get; private set; }
+        public GridObjectManager GridObjectManager { get; private set; }
 
         public KeyboardState KeyboardState { get; private set; }
 
@@ -22,10 +22,10 @@ namespace MonoCollisions
             IsMouseVisible = true;
 
             // Initialize objects
-            ObjectManager = new ObjectManager();
-            Player = new Player(0, 0, Drawing.TileSize, Drawing.TileSize);
-            ObjectManager.AddObject(Player);
-            ObjectManager.AddObject(new Block(Drawing.TileSize * 4, Drawing.TileSize * 4, Drawing.TileSize, Drawing.TileSize));
+            GridObjectManager = new GridObjectManager(Drawing.GridWidth, Drawing.GridHeight);
+            Player = new Player(0, 0, Drawing.Grid, Drawing.Grid);
+            GridObjectManager.AddDynamicObject(Player);
+            GridObjectManager.AddStaticObject(new Block(Drawing.Grid * 4, Drawing.Grid * 4, Drawing.Grid, Drawing.Grid));
         }
 
         protected override void Initialize()
@@ -50,7 +50,7 @@ namespace MonoCollisions
             if (KeyboardState.IsKeyDown(Keys.Escape)) Exit();
 
             // Update objects
-            ObjectManager.Update(this, delta);
+            GridObjectManager.Update(this, delta);
 
             base.Update(gameTime);
         }
@@ -60,7 +60,7 @@ namespace MonoCollisions
             GraphicsDevice.Clear(Color.Black);
 
             SpriteBatch.Begin(); // Begin sprite batch
-            ObjectManager.Draw(this); // Draw objects
+            GridObjectManager.Draw(this); // Draw objects
             SpriteBatch.End(); // End sprite batch
 
             base.Draw(gameTime);

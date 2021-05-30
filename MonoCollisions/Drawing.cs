@@ -5,12 +5,16 @@ namespace MonoCollisions
 {
     public static class Drawing
     {
-        // Screen width and height
-        public const int ScreenWidth = 512;
-        public const int ScreenHeight = 512;
+        // Grid size
+        public const int Grid = 32;
 
-        // Tile size
-        public const int TileSize = 32;
+        // Grid width and height
+        public const int GridWidth = 16;
+        public const int GridHeight = 16;
+
+        // Screen width and height
+        public const int ScreenWidth = GridWidth * Grid;
+        public const int ScreenHeight = GridHeight * Grid;
 
         private static Texture2D blankTexture;
 

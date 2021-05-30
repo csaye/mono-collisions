@@ -35,8 +35,12 @@ namespace MonoCollisions.Objects
 
         public void Draw(Game1 game)
         {
-            // Draw all static objects
-            foreach (GameObject staticObject in staticObjects) staticObject.Draw(game);
+            // For each static object
+            foreach (GameObject staticObject in staticObjects)
+            {
+                // Draw if not null
+                if (staticObject != null) staticObject.Draw(game);
+            }
 
             // Draw all dynamic objects
             foreach (GameObject dynamicObject in dynamicObjects) dynamicObject.Draw(game);
@@ -46,7 +50,7 @@ namespace MonoCollisions.Objects
         private Vector2 ProcessIntersection(Rectangle newBounds, Rectangle objBounds, Vector2 newPosition)
         {
             // If object bounds intersect
-            if (!objBounds.Intersects(newBounds))
+            if (objBounds.Intersects(newBounds))
             {
                 // Get object centers
                 Point objCenter = objBounds.Center;
