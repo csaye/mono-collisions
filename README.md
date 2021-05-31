@@ -4,7 +4,7 @@ A top-down collision system for MonoGame.
 
 ## Scripts
 
-[GameObject.cs](MonoCollisions/Objects/GameObjects.cs)
+[GameObject.cs](MonoCollisions/Objects/GameObject.cs)
 
 - Abstract class defining a collidable object
 - Defines object position and size as `Vector2`s
